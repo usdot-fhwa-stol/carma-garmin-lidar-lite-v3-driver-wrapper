@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node1">
+    <param name="port" value="/dev/ttyACM0"/>
+    <param name="baud" value="57600"/>
+  </node>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node2">
+    <param name="port" value="/dev/ttyACM1"/>
+    <param name="baud" value="57600"/>
+  </node>
+  <param name="/distance_between_two_sensor" type="double" value="2.0" />
+  <node name="" pkg="CARMAGarminLidarLiteV3DriverWrapper" type="lidar_litev3hp_node" output="screen" />
+</launch>
