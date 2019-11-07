@@ -29,9 +29,9 @@ LidarLiteNode::LidarLiteNode()
 
   }
 
-   void LidarLiteNode::callback(const sensor_msgs::RangeConstPtr &in1, const sensor_msgs::RangeConstPtr &in2)
+   void LidarLiteNode::callback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2)
   {
-    ROS_INFO_STREAM("sensor1= "<<in1->range<<" "<<"sensor2= "<<in2->range);
+    ROS_INFO_STREAM("sensor1= "<<sensor_inp1->range<<" "<<"sensor2= "<<sensor_inp2->range);
     status_.trailer_angle_sensor= true;
     status_lidar_=cav_msgs::DriverStatus::OPERATIONAL;
 
@@ -44,7 +44,7 @@ LidarLiteNode::LidarLiteNode()
     double sensor_distance; //Distance between sensor
     nh_.getParam("/distance_between_two_sensor",sensor_distance);
     
-    double opposite_side=((in1->range)-(in2->range));
+    double opposite_side=((sensor_inp1->range)-(sensor_inp2->range));
 
     double hypotenuse=hypot(sensor_distance,opposite_side);
 
@@ -68,7 +68,6 @@ LidarLiteNode::LidarLiteNode()
 void LidarLiteNode::updateLidarStatus(const ros::TimerEvent& )
 {
     ros::Duration lidar_time_difference=ros::Time::now()-last_update_time_;
-    //ROS_INFO_STREAM("lidar_time_difference= "<<lidar_time_difference<<"  "<<"status_lidar_= "<<status_lidar_);
     //Greater than 2 seconds of non-response is the minimum time required to classify as not connected
   if (last_update_time_.isZero() || (lidar_time_difference>ros::Duration(2.0)))
     {

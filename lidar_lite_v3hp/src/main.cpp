@@ -19,18 +19,6 @@
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "lidar_litev3hp");
-  //ros::NodeHandle nh;
-  //ros::Rate loop_rate(10);
   LidarLiteNode llvhp;
-
   ros::spin();
-
- /* while(ros::ok())
-{
-  synchronizer.updateLidarStatus();
-  ros::spinOnce();
-  loop_rate.sleep();
-  synchronizer.pub_status_.publish(synchronizer.status_);
-}*/
-
 }
