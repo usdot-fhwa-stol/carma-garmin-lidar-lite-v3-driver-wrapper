@@ -43,17 +43,11 @@ LidarLiteNode::LidarLiteNode()
 
     double sensor_distance; //Distance between sensor
     nh_.getParam("/distance_between_two_sensor",sensor_distance);
-    
-    double opposite_side=((sensor_inp1->range)-(sensor_inp2->range));
-
-    double hypotenuse=hypot(sensor_distance,opposite_side);
-
-    double ang_deg=asin(opposite_side/hypotenuse);
 
     std_msgs::Float64 msg_ang;
-    msg_ang.data=ang_deg*0.01745329252;
+    msg_ang.data=worker_.LidarLiteNodeWorker::trailerAngle(sensor_distance,sensor_inp1->range,sensor_inp2->range);
 
-   pub_ang_.publish(msg_ang);
+    pub_ang_.publish(msg_ang);
    
   }
 

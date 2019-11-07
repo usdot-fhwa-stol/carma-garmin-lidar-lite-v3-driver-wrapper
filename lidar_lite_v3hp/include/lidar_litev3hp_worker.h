@@ -13,3 +13,22 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
+#ifndef HEADERNAME_H
+#define HEADERNAME_H
+
+#include <math.h> 
+
+class LidarLiteNodeWorker
+{
+
+
+ public:
+ 	
+  double trailerAngle(double sensor_distance,double sensor_inp1,double sensor_inp2);
+
+
+ 
+};
+
+#endif /* HEADERNAME_H */

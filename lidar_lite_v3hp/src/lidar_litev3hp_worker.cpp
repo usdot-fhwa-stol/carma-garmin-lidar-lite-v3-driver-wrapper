@@ -13,3 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+#include "lidar_litev3hp_worker.h"
+
+double LidarLiteNodeWorker::trailerAngle(double sensor_distance,double sensor_inp1,double sensor_inp2)
+{
+	double opposite_side=((sensor_inp1)-(sensor_inp2));
+
+    double hypotenuse=hypot(sensor_distance,opposite_side);
+
+    double ang_deg=asin(opposite_side/hypotenuse);
+
+    double ang_rad=ang_deg*0.01745329252;
+
+    return(ang_rad);
+}
