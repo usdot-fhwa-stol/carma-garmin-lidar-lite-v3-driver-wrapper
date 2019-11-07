@@ -15,16 +15,16 @@
  */
 #include "lidar_litev3hp_wrapper.h"
 
-LidarLiteNode::LidarLiteNode(ros::NodeHandle *nh)
+LidarLiteNode::LidarLiteNode()
   {
-    status_.lidar_lite_v3hp= true;
-    sub_1_.subscribe(*nh, "sensor1_data", 1);
-    sub_2_.subscribe(*nh, "sensor2_data", 1);
+    status_.trailer_angle_sensor= true;
+    sub_1_.subscribe(nh_, "sensor1_data", 1);
+    sub_2_.subscribe(nh_, "sensor2_data", 1);
     sync_.reset(new Sync(MySyncPolicy(10), sub_1_, sub_2_));
     sync_->registerCallback(boost::bind(&LidarLiteNode::callback, this, _1, _2));
-    pub_ang_=nh->advertise<std_msgs::Float64>("trailer_angle",10);
-    sub_alert_=nh->subscribe("system_alert",10,&LidarLiteNode::alertCallback,this);
-    pub_status_=nh->advertise<cav_msgs::DriverStatus>("driver_discovery", 10);
+    pub_ang_=nh_.advertise<std_msgs::Float64>("trailer_angle",10);
+    sub_alert_=nh_.subscribe("system_alert",10,&LidarLiteNode::alertCallback,this);
+    pub_status_=nh_.advertise<cav_msgs::DriverStatus>("driver_discovery", 10);
   }
 
    void LidarLiteNode::callback(const sensor_msgs::RangeConstPtr &in1, const sensor_msgs::RangeConstPtr &in2)
@@ -39,7 +39,7 @@ LidarLiteNode::LidarLiteNode(ros::NodeHandle *nh)
     }
 
     double sensor_distance; //Distance between sensor
-    nh->getParam("/distance_between_two_sensor",sensor_distance);
+    nh_.getParam("/distance_between_two_sensor",sensor_distance);
     
     double opposite_side=((in1->range)-(in2->range));
 

@@ -8,5 +8,5 @@
     <param name="baud" value="57600"/>
   </node>
   <param name="/distance_between_two_sensor" type="double" value="2.0" />
-  <node name="" pkg="CARMAGarminLidarLiteV3DriverWrapper" type="lidar_litev3hp_node" output="screen" />
+  <node name="lidar_litev3hp" pkg="lidar_lite_v3hp" type="lidar_litev3hp_node" output="screen" />
 </launch>

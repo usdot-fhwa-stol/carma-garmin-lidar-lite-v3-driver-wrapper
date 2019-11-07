@@ -19,9 +19,9 @@
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "lidar_litev3hp");
-  ros::NodeHandle nh;
+  //ros::NodeHandle nh;
   //ros::Rate loop_rate(10);
-  LidarLiteNode llvhp=LidarLiteNode(&nh);
+  LidarLiteNode llvhp;
 
   ros::spin();
 

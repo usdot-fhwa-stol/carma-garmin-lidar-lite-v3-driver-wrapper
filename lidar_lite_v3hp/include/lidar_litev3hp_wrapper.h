@@ -37,13 +37,14 @@ class LidarLiteNode
   //ros::Timer timer_;
   // timer_ = node.createTimer(ros::Duration(1.0), &NovatelGpsNodelet::publish_status,this);
   uint8_t status_lidar_;
-  
+  ros::NodeHandle nh_;
 
   typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Range, sensor_msgs::Range> MySyncPolicy;
   typedef message_filters::Synchronizer<MySyncPolicy> Sync;
   boost::shared_ptr<Sync> sync_;
  public:
-  LidarLiteNode(ros::NodeHandle *nh);
+ 	
+  LidarLiteNode();
  
   void callback(const sensor_msgs::RangeConstPtr &in1, const sensor_msgs::RangeConstPtr &in2);
 
