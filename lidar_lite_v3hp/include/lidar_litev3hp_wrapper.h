@@ -34,8 +34,7 @@ class LidarLiteNode
   ros::Publisher pub_ang_;
   ros::Subscriber sub_alert_;
   ros::Time last_update_time_;
-  //ros::Timer timer_;
-  // timer_ = node.createTimer(ros::Duration(1.0), &NovatelGpsNodelet::publish_status,this);
+  ros::Timer timer_;
   uint8_t status_lidar_;
   ros::NodeHandle nh_;
 
@@ -50,7 +49,7 @@ class LidarLiteNode
 
   void alertCallback(const cav_msgs::SystemAlertConstPtr &msg);
 
-/*void updateLidarStatus();*/
+  void updateLidarStatus(const ros::TimerEvent&);
 
  cav_msgs::DriverStatus status_;
  ros::Publisher pub_status_;

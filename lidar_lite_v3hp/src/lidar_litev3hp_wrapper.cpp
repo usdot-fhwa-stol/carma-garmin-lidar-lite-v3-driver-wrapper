@@ -17,7 +17,8 @@
 
 LidarLiteNode::LidarLiteNode()
   {
-    status_.trailer_angle_sensor= true;
+    status_.trailer_angle_sensor= false;
+    timer_ = nh_.createTimer(ros::Duration(1.0), &LidarLiteNode::updateLidarStatus,this);
     sub_1_.subscribe(nh_, "sensor1_data", 1);
     sub_2_.subscribe(nh_, "sensor2_data", 1);
     sync_.reset(new Sync(MySyncPolicy(10), sub_1_, sub_2_));
@@ -25,11 +26,13 @@ LidarLiteNode::LidarLiteNode()
     pub_ang_=nh_.advertise<std_msgs::Float64>("trailer_angle",10);
     sub_alert_=nh_.subscribe("system_alert",10,&LidarLiteNode::alertCallback,this);
     pub_status_=nh_.advertise<cav_msgs::DriverStatus>("driver_discovery", 10);
+
   }
 
    void LidarLiteNode::callback(const sensor_msgs::RangeConstPtr &in1, const sensor_msgs::RangeConstPtr &in2)
   {
     ROS_INFO_STREAM("sensor1= "<<in1->range<<" "<<"sensor2= "<<in2->range);
+    status_.trailer_angle_sensor= true;
     status_lidar_=cav_msgs::DriverStatus::OPERATIONAL;
 
     if(status_lidar_==cav_msgs::DriverStatus::OPERATIONAL)
@@ -51,7 +54,7 @@ LidarLiteNode::LidarLiteNode()
     msg_ang.data=ang_deg*0.01745329252;
 
    pub_ang_.publish(msg_ang);
-   pub_status_.publish(status_);
+   
   }
 
     void LidarLiteNode::alertCallback(const cav_msgs::SystemAlertConstPtr &msg)
@@ -62,12 +65,15 @@ LidarLiteNode::LidarLiteNode()
     }
 }
 
-/*void updateLidarStatus()
+void LidarLiteNode::updateLidarStatus(const ros::TimerEvent& )
 {
     ros::Duration lidar_time_difference=ros::Time::now()-last_update_time_;
+    //ROS_INFO_STREAM("lidar_time_difference= "<<lidar_time_difference<<"  "<<"status_lidar_= "<<status_lidar_);
     //Greater than 2 seconds of non-response is the minimum time required to classify as not connected
-  if (last_update_time_.isZero() || (lidar_time_difference>ros::Duration(2.0)) && status_lidar_==cav_msgs::DriverStatus::OPERATIONAL)
+  if (last_update_time_.isZero() || (lidar_time_difference>ros::Duration(2.0)))
     {
-    status_lidar_=cav_msgs::DriverStatus::OFF;
+    status_.status=cav_msgs::DriverStatus::OFF;
+    status_.trailer_angle_sensor= false;
     }
-}*/
+    pub_status_.publish(status_);
+}
