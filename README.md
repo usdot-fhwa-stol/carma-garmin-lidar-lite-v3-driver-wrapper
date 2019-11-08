@@ -1,5 +1,5 @@
 # CARMAGarminLidarLiteV3DriverWrapper
-CARMAGarminLidarLiteV3DriverWrapper contains a driver wrapper for usage with the Garmin LIDAR Lite v3 ROS driver to integrate with the CARMA Platform
+CARMAGarminLidarLiteV3DriverWrapper contains a driver wrapper which is developed based on GarminLidarLite Arduino Library which is licensed under the Apache 2.0 License.
 
 To add this package to your CARMAPlatform project simply clone this repository into your Catkin workspace
 

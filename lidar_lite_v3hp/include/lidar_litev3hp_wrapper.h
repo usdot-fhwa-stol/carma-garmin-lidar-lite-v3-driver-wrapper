@@ -46,13 +46,25 @@ class LidarLiteNode
   boost::shared_ptr<Sync> sync_;
   LidarLiteNodeWorker worker_;
  public:
- 	
+   /*! \fn LidarLiteNode()
+    \brief LidarLiteNode constructor to initialize all the ros publisher,subscriber object and other parameters.
+   */
   LidarLiteNode();
- 
+    /*! \fn sensorCallback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2)
+    \brief sensorCallback function extract sensor_inp1 and sensor_inp2 from respective topics.
+    \param sensor_distance The fixed distance between two sensors.
+    \param sensor_inp1 The input value of sensor1.
+    \param sensor_inp2 The input value of sensor2.
+    */
   void sensorCallback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2);
-
+   /*! \fn alertCallback(const cav_msgs::SystemAlertConstPtr &msg)
+    \brief alertCallback function monitors for any SystemAlert sent and shuts ros down.
+    \param msg The data received from SystemAlert topic.
+   */
   void alertCallback(const cav_msgs::SystemAlertConstPtr &msg);
-
+   /*! \fn updateLidarStatus(const ros::TimerEvent&)
+    \brief updateLidarStatus is a timer function to publish lidar status to DriverDiscovery.
+   */
   void updateLidarStatus(const ros::TimerEvent&);
  
 };
