@@ -21,9 +21,7 @@ double LidarLiteNodeWorker::trailerAngle(double sensor_distance,double sensor_in
 
     double hypotenuse=hypot(sensor_distance,opposite_side);
 
-    double ang_deg=asin(opposite_side/hypotenuse);
-
-    double ang_rad=ang_deg*0.01745329252;
+    double ang_rad=asin(opposite_side/hypotenuse);
 
     return(ang_rad);
 }

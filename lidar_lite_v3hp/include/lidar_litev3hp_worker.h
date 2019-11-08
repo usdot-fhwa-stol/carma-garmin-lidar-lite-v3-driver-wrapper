@@ -14,21 +14,18 @@
  * the License.
  */
 
-#ifndef HEADERNAME_H
-#define HEADERNAME_H
+#ifndef LIDAR_LITEV3HP_WORKER_H
+#define LIDAR_LITEV3HP_WORKER_H
 
 #include <math.h> 
 
 class LidarLiteNodeWorker
 {
 
-
  public:
  	
   double trailerAngle(double sensor_distance,double sensor_inp1,double sensor_inp2);
-
-
  
 };
 
-#endif /* HEADERNAME_H */
+#endif /* LIDAR_LITEV3HP_WORKER_H */

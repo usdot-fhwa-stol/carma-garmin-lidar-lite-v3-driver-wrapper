@@ -44,6 +44,9 @@ include_directories(
 
 add_executable(lidar_litev3hp_node src/main.cpp src/lidar_litev3hp_wrapper.cpp src/lidar_litev3hp_worker.cpp)
 
+add_library(lidar_litev3hp_worker_lib src/lidar_litev3hp_worker.cpp)
+add_dependencies(lidar_litev3hp_worker_lib ${catkin_EXPORTED_TARGETS})
+
 ## Specify libraries to link a library or executable target against
 target_link_libraries(lidar_litev3hp_node ${catkin_LIBRARIES})
 
@@ -95,4 +98,5 @@ target_link_libraries(lidar_litev3hp_node ${catkin_LIBRARIES})
 #############
 
 ## Add gtest based cpp test target and link libraries
-
+catkin_add_gmock(${PROJECT_NAME}-test test/test_lidar_litev3hp.cpp)
+target_link_libraries(${PROJECT_NAME}-test lidar_litev3hp_worker_lib ${catkin_LIBRARIES})

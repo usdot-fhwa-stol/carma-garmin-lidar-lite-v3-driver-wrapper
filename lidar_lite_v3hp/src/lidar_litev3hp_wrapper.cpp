@@ -22,15 +22,15 @@ LidarLiteNode::LidarLiteNode()
     sub_1_.subscribe(nh_, "sensor1_data", 1);
     sub_2_.subscribe(nh_, "sensor2_data", 1);
     sync_.reset(new Sync(MySyncPolicy(10), sub_1_, sub_2_));
-    sync_->registerCallback(boost::bind(&LidarLiteNode::callback, this, _1, _2));
+    sync_->registerCallback(boost::bind(&LidarLiteNode::sensorCallback, this, _1, _2));
     pub_ang_=nh_.advertise<std_msgs::Float64>("trailer_angle",10);
     sub_alert_=nh_.subscribe("system_alert",10,&LidarLiteNode::alertCallback,this);
     pub_status_=nh_.advertise<cav_msgs::DriverStatus>("driver_discovery", 10);
-
   }
 
-   void LidarLiteNode::callback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2)
+   void LidarLiteNode::sensorCallback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2)
   {
+    
     ROS_INFO_STREAM("sensor1= "<<sensor_inp1->range<<" "<<"sensor2= "<<sensor_inp2->range);
     status_.trailer_angle_sensor= true;
     status_lidar_=cav_msgs::DriverStatus::OPERATIONAL;

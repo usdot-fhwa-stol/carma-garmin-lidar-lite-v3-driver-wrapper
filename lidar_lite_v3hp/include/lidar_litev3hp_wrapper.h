@@ -13,13 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
+#ifndef LIDAR_LITEV3HP_WRAPPER_H
+#define LIDAR_LITEV3HP_WRAPPER_H
+
 #include <ros/ros.h>
 #include <sensor_msgs/Range.h>
 #include <std_msgs/Float64.h>
 #include <message_filters/subscriber.h>
 #include <message_filters/synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
-#include <math.h> 
 #include <cav_msgs/SystemAlert.h>
 #include <cav_msgs/DriverStatus.h>
 #include "lidar_litev3hp_worker.h"
@@ -46,13 +49,12 @@ class LidarLiteNode
  	
   LidarLiteNode();
  
-  void callback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2);
+  void sensorCallback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2);
 
   void alertCallback(const cav_msgs::SystemAlertConstPtr &msg);
 
   void updateLidarStatus(const ros::TimerEvent&);
-
- 
  
 };
 
+#endif /* LIDAR_LITEV3HP_WRAPPER_H */
