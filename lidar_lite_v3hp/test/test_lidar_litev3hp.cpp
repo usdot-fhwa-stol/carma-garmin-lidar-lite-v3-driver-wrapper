@@ -20,9 +20,9 @@
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleNormalState)
 {
     LidarLiteNodeWorker worker;
-    double sensor_distance=100;//Fixed sensor distance at 100 cm
-    double sensor_inp1=150;// sensor input one
-    double sensor_inp2=150;// sensor input two
+    double sensor_distance=150.0;//Fixed sensor distance at 150.0 cm
+    double sensor_inp1=1.5;// sensor input one in m
+    double sensor_inp2=1.5;// sensor input two in m
 
     EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0);
 }
@@ -30,41 +30,41 @@ TEST(LidarLiteV3hpWorkerTest, testTrailerAngleNormalState)
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleLeftTurn)
 {
     LidarLiteNodeWorker worker;
-    double sensor_distance=100;//Fixed sensor distance at 100 cm
-    double sensor_inp1=150;// sensor input one
-    double sensor_inp2=100;// sensor input two
+    double sensor_distance=150.0;//Fixed sensor distance at 150.0 cm
+    double sensor_inp1=1.5;// sensor input one in m
+    double sensor_inp2=1.0;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.463648);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.321751);
 }
 
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleRightTurn)
 {
     LidarLiteNodeWorker worker;
-    double sensor_distance=100;//Fixed sensor distance at 100 cm
-    double sensor_inp1=100;// sensor input one
-    double sensor_inp2=150;// sensor input two
+    double sensor_distance=150.0;//Fixed sensor distance at 150.0 cm
+    double sensor_inp1=1.0;// sensor input one in m
+    double sensor_inp2=1.5;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.463648);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.321751);
 }
 
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleLeftTurn)
 {
     LidarLiteNodeWorker worker;
-    double sensor_distance=100;//Fixed sensor distance at 100 cm
-    double sensor_inp1=150;// sensor input one
-    double sensor_inp2=100;// sensor input two
+    double sensor_distance=150.0;//Fixed sensor distance at 150.0 cm
+    double sensor_inp1=1.10;// sensor input one in m
+    double sensor_inp2=2.10;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.785398);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.588003);
 }
 
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleRightTurn)
 {
     LidarLiteNodeWorker worker;
-    double sensor_distance=100;//Fixed sensor distance at 100 cm
-    double sensor_inp1=110;// sensor input one
-    double sensor_inp2=210;// sensor input two
+    double sensor_distance=150.0;//Fixed sensor distance at 150.0 cm
+    double sensor_inp1=2.10;// sensor input one in m
+    double sensor_inp2=1.10;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.785398);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.588003);
 }
 
 // Run all the tests
