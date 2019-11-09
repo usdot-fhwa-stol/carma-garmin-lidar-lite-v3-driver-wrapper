@@ -20,7 +20,7 @@
 double LidarLiteNodeWorker::trailerAngle(double sensor_distance,double sensor_inp1,double sensor_inp2)
 {	
 	//The opposite side of the triangle is found from the difference of both input sensor distance.ance
-	double opposite_side=((sensor_inp1)-(sensor_inp2));
+	double opposite_side=((sensor_inp1*100.0)-(sensor_inp2*100.0));
     // The hypotenuse is found using the opposite_side and adjacent side(here sensor_distance).
     double hypotenuse=hypot(sensor_distance,opposite_side);
     //Trailer angle in radians is the sin inverse of opposite_side divided by hypotenuse.

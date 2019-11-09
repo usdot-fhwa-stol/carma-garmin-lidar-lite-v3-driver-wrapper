@@ -31,7 +31,7 @@ LidarLiteNode::LidarLiteNode()
    void LidarLiteNode::sensorCallback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2)
   {
     
-    ROS_INFO_STREAM("sensor1= "<<sensor_inp1->range<<" "<<"sensor2= "<<sensor_inp2->range);
+    
     status_.trailer_angle_sensor= true;
     status_lidar_=cav_msgs::DriverStatus::OPERATIONAL;
 
@@ -42,11 +42,10 @@ LidarLiteNode::LidarLiteNode()
     }
 
     double sensor_distance; //Distance between sensor
-    nh_.getParam("distance_between_two_sensor",sensor_distance);
-
+    nh_.getParam("/lidar_litev3hp/distance_between_two_sensor",sensor_distance);
+    ROS_INFO_STREAM("sensor1= "<<sensor_inp1->range<<" "<<"sensor2= "<<sensor_inp2->range<<"sensor_distance= "<<sensor_distance);
     std_msgs::Float64 msg_ang;
     msg_ang.data=worker_.LidarLiteNodeWorker::trailerAngle(sensor_distance,sensor_inp1->range,sensor_inp2->range);
-
     pub_ang_.publish(msg_ang);
    
   }
