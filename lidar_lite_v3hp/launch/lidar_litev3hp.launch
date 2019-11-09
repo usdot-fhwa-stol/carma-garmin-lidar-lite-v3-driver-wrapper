@@ -1,7 +1,7 @@
 <launch>
-  <arg name="port0" default="/dev/ttyACM0" />
+  <arg name="port0" default="/dev/ttyACM1" />
   <arg name="baud0" default="57600" />
-  <arg name="port1" default="dev/ttyACM1" />
+  <arg name="port1" default="/dev/ttyACM0" />
   <arg name="baud1" default="57600" />
 
   <node pkg="rosserial_python" type="serial_node.py" name="serial_node1">
@@ -12,6 +12,6 @@
     <param name="port" value="$(arg port1)"/>
     <param name="baud" value="$(arg baud1)"/>
   </node>
-  <param name="/distance_between_two_sensor" type="double" value="1.5" />
+  <param name="distance_between_two_sensor" type="double" value="1.5" />
   <node name="lidar_litev3hp" pkg="lidar_lite_v3hp" type="lidar_litev3hp_node" output="screen" />
 </launch>

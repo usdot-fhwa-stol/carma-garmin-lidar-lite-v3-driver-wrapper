@@ -19,8 +19,8 @@ LidarLiteNode::LidarLiteNode()
   {
     status_.trailer_angle_sensor= false;
     timer_ = nh_.createTimer(ros::Duration(1.0), &LidarLiteNode::updateLidarStatus,this);
-    sub_1_.subscribe(nh_, "sensor1_data", 1);
-    sub_2_.subscribe(nh_, "sensor2_data", 1);
+    sub_1_.subscribe(nh_, "range_sensor1/range", 1);
+    sub_2_.subscribe(nh_, "range_sensor2/range", 1);
     sync_.reset(new Sync(MySyncPolicy(10), sub_1_, sub_2_));
     sync_->registerCallback(boost::bind(&LidarLiteNode::sensorCallback, this, _1, _2));
     pub_ang_=nh_.advertise<std_msgs::Float64>("trailer_angle",10);
@@ -42,7 +42,7 @@ LidarLiteNode::LidarLiteNode()
     }
 
     double sensor_distance; //Distance between sensor
-    nh_.getParam("/distance_between_two_sensor",sensor_distance);
+    nh_.getParam("distance_between_two_sensor",sensor_distance);
 
     std_msgs::Float64 msg_ang;
     msg_ang.data=worker_.LidarLiteNodeWorker::trailerAngle(sensor_distance,sensor_inp1->range,sensor_inp2->range);

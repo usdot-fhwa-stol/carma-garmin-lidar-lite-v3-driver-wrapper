@@ -33,7 +33,7 @@ ros::NodeHandle  n;
 //Message type sensor_msgs::Range
 sensor_msgs::Range distance_msg;
 //ROS Publisher object
-ros::Publisher pub_distance( "sensor1_data", &distance_msg);
+ros::Publisher pub_distance( "range_sensor1/range", &distance_msg);
 char frameid[] = "/laser_lite_v3hp_sensor1";
 
 void setup()
