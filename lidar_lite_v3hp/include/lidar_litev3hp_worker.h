@@ -25,9 +25,9 @@ class LidarLiteNodeWorker
  public:
  	    /*! \fn trailerAngle(double sensor_distance,double sensor_inp1,double sensor_inp2)
     \brief trailerAngle function uses sensor_distance and two sensor input to calculate trailer angle.
-    \param sensor_distance The fixed distance between two sensors.
-    \param sensor_inp1 The input value of sensor1.
-    \param sensor_inp2 The input value of sensor2.
+    \param sensor_distance The fixed distance between two sensors in centimeters.
+    \param sensor_inp1 The input value of sensor1 in meters.
+    \param sensor_inp2 The input value of sensor2 in meters.
     */
   double trailerAngle(double sensor_distance,double sensor_inp1,double sensor_inp2);
  

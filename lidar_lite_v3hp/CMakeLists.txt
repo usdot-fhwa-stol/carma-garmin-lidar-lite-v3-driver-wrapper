@@ -83,3 +83,4 @@ install(DIRECTORY
 ## Add gtest based cpp test target and link libraries
 catkin_add_gmock(${PROJECT_NAME}-test test/test_lidar_litev3hp.cpp)
 target_link_libraries(${PROJECT_NAME}-test lidar_litev3hp_worker_lib ${catkin_LIBRARIES})
+
