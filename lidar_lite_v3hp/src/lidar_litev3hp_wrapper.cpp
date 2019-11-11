@@ -31,7 +31,7 @@ LidarLiteNode::LidarLiteNode()
    void LidarLiteNode::sensorCallback(const sensor_msgs::RangeConstPtr &sensor_inp1, const sensor_msgs::RangeConstPtr &sensor_inp2)
   {
     status_.trailer_angle_sensor= true;
-    status_lidar_=cav_msgs::DriverStatus::OPERATIONAL;
+    status_.status=cav_msgs::DriverStatus::OPERATIONAL;
     last_update_time_=ros::Time::now();
    
     double sensor_distance; //Distance between sensor
