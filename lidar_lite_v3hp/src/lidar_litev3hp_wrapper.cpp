@@ -32,13 +32,8 @@ LidarLiteNode::LidarLiteNode()
   {
     status_.trailer_angle_sensor= true;
     status_lidar_=cav_msgs::DriverStatus::OPERATIONAL;
-
-    if(status_lidar_==cav_msgs::DriverStatus::OPERATIONAL)
-    {
-      status_.status=cav_msgs::DriverStatus::OPERATIONAL;
-      last_update_time_=ros::Time::now();
-    }
-
+    last_update_time_=ros::Time::now();
+   
     double sensor_distance; //Distance between sensor
     nh_.getParam("~/distance_between_two_sensor",sensor_distance);
     ROS_INFO_STREAM("sensor1= "<<sensor_inp1->range<<" "<<"sensor2= "<<sensor_inp2->range<<"sensor_distance= "<<sensor_distance);
