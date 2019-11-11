@@ -24,7 +24,7 @@ TEST(LidarLiteV3hpWorkerTest, testTrailerAngleNormalState)
     double sensor_inp1=1.5;// sensor input one in m
     double sensor_inp2=1.5;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0, 0.00001);
 }
 
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleLeftTurn1)
@@ -34,7 +34,7 @@ TEST(LidarLiteV3hpWorkerTest, testTrailerAngleLeftTurn1)
     double sensor_inp1=1.5;// sensor input one in m
     double sensor_inp2=1.0;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.321751);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.321751, 0.00001);
 }
 
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleRightTurn1)
@@ -44,7 +44,7 @@ TEST(LidarLiteV3hpWorkerTest, testTrailerAngleRightTurn1)
     double sensor_inp1=1.0;// sensor input one in m
     double sensor_inp2=1.5;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.321751);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.321751, 0.00001);
 }
 
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleRightTurn2)
@@ -54,7 +54,7 @@ TEST(LidarLiteV3hpWorkerTest, testTrailerAngleRightTurn2)
     double sensor_inp1=1.10;// sensor input one in m
     double sensor_inp2=2.10;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.588003);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),-0.588003, 0.00001);
 }
 
 TEST(LidarLiteV3hpWorkerTest, testTrailerAngleLeftTurn2)
@@ -64,7 +64,7 @@ TEST(LidarLiteV3hpWorkerTest, testTrailerAngleLeftTurn2)
     double sensor_inp1=2.10;// sensor input one in m
     double sensor_inp2=1.10;// sensor input two in m
 
-    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.588003);
+    EXPECT_NEAR(worker.trailerAngle(sensor_distance,sensor_inp1,sensor_inp2),0.588003, 0.00001);
 }
 
 // Run all the tests
