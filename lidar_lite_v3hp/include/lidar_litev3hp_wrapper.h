@@ -40,6 +40,7 @@ class LidarLiteNode
   ros::Timer timer_;
   uint8_t status_lidar_;
   ros::NodeHandle nh_;
+  ros::NodeHandle pnh_;
   ros::Publisher pub_status_;
   typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Range, sensor_msgs::Range> MySyncPolicy;
   typedef message_filters::Synchronizer<MySyncPolicy> Sync;
