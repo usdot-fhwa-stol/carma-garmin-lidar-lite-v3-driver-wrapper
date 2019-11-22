@@ -16,4 +16,6 @@ http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup
 
 3) Make sure to check the launch file and adjust the parameters as needed.
 
+Note: Please use 100kHz I2C speed if using I2C wire length above 25 cm.
+
 
