@@ -17,6 +17,7 @@
 
 LidarLiteNode::LidarLiteNode() : pnh_("~")
   {
+    pnh_("~");
     status_.trailer_angle_sensor= false;
     timer_ = nh_.createTimer(ros::Duration(1.0), &LidarLiteNode::updateLidarStatus,this);
     sub_1_.subscribe(nh_, "range_sensor1/range", 1);
