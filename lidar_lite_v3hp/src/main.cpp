@@ -14,9 +14,8 @@
  * the License.
  */
 #include "lidar_litev3hp_wrapper.h"
-#include "lidar_litev3hp_worker.h"
 
-int main(int argc, char **argv)
+int main(int argc, char **argv) 
 {
   ros::init(argc, argv, "lidar_litev3hp");
   LidarLiteNode llvhp;
