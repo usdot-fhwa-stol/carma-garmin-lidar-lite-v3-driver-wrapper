@@ -14,7 +14,6 @@
  * the License.
  */
 #include "lidar_litev3hp_wrapper.h"
-#include "lidar_litev3hp_worker.h"
 
 int main(int argc, char **argv) 
 {
