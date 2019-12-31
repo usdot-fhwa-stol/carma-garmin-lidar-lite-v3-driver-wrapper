@@ -48,7 +48,7 @@ add_library(lidar_litev3hp_worker_lib src/lidar_litev3hp_worker.cpp)
 add_dependencies(lidar_litev3hp_worker_lib ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(lidar_litev3hp_node ${catkin_LIBRARIES})
+target_link_libraries(lidar_litev3hp_node lidar_litev3hp_worker_lib ${catkin_LIBRARIES})
 
 
 #############
