@@ -1,0 +1,19 @@
+<launch>
+  <arg name="port0" default="/dev/ttyACM1" />
+  <arg name="baud0" default="57600" />
+  <arg name="port1" default="/dev/ttyACM0" />
+  <arg name="baud1" default="57600" />
+  <arg name="vehicle_calibration_params_file" default="$(find lidar_lite_v3hp)/config/calibration.yaml"/>
+
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node1">
+    <param name="port" value="$(arg port0)"/>
+    <param name="baud" value="$(arg baud0)"/>
+  </node>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node2">
+    <param name="port" value="$(arg port1)"/>
+    <param name="baud" value="$(arg baud1)"/>
+  </node>
+  <node name="lidar_litev3hp" pkg="lidar_lite_v3hp" type="lidar_litev3hp_node" output="screen" >
+  <rosparam command="load" file="$(arg vehicle_calibration_params_file)" />
+  </node>
+</launch>
