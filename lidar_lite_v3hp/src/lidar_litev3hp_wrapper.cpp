@@ -37,6 +37,7 @@ LidarLiteNode::LidarLiteNode() : pnh_("~")
     double sensor_distance; //Distance between sensor
     pnh_.getParam("distance_between_two_sensor",sensor_distance);
     ROS_INFO_STREAM("sensor1= "<<sensor_inp1->range<<" "<<"sensor2= "<<sensor_inp2->range<<"sensor_distance= "<<sensor_distance);
+    tangle_.header.stamp=ros::Time::now();
     tangle_.angle=worker_.LidarLiteNodeWorker::trailerAngle(sensor_distance,sensor_inp1->range,sensor_inp2->range);
     pub_ang_.publish(tangle_);
   }
