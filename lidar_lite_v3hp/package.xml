@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>lidar_lite_v3hp</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The lidar_lite_v3hp package</description>
   <maintainer email="carma@todo.todo">carma</maintainer>
   <license>Apache 2.0</license>
