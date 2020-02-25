@@ -73,5 +73,6 @@ void loop()
   distance_msg.range = lidarv3hp.distance()/100.0;
   //Publish distance to topic sensor2_data
   pub_distance.publish(&distance_msg);
-  n.spinOnce();  
+  n.spinOnce(); 
+  delay(10); 
 }

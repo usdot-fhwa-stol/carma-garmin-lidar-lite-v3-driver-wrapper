@@ -74,4 +74,5 @@ void loop()
   //Publish distance to topic sensor1_data
   pub_distance.publish(&distance_msg);
   n.spinOnce();  
+  delay(10);
 }
