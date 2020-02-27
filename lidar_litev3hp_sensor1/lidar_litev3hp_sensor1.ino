@@ -21,6 +21,8 @@
  * the License.
  
 ------------------------------------------------------------------------------*/
+#define USE_USBCON
+
 #include <LIDARLite.h>
 #include <Wire.h>
 #include <ros.h>
@@ -74,5 +76,5 @@ void loop()
   //Publish distance to topic sensor1_data
   pub_distance.publish(&distance_msg);
   n.spinOnce();  
-  delay(10);
+  delay(1000);
 }
