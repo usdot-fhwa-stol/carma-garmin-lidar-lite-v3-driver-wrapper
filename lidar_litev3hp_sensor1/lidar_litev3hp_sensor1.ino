@@ -41,7 +41,7 @@ char frameid[] = "/laser_lite_v3hp_sensor1";
 void setup()
 {
   //Serial communication BaudRate:115200
-  Serial.begin(115200); 
+  //Serial.begin(115200); 
   // begin(int configuration, bool fasti2c, char lidarliteAddress)
   // 0 sets configuration to default and true sets I2C to 400 kHz
   // If using long wire reduce this speed
