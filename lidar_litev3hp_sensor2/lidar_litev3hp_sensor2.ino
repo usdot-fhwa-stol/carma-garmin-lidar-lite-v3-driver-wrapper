@@ -42,6 +42,7 @@ void setup()
 {
   //Serial communication BaudRate:115200
   //Serial.begin(115200); 
+  n.getHardware()->setBaud(57600);
   // begin(int configuration, bool fasti2c, char lidarliteAddress)
   // 0 sets configuration to default and true sets I2C to 400 kHz
   // If using long wire reduce this speed
