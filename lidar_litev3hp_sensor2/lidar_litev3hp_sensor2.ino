@@ -21,7 +21,7 @@
  * the License.
  
 ------------------------------------------------------------------------------*/
-#define USE_USBCON
+//#define USE_USBCON
 
 #include <LIDARLite.h>
 #include <Wire.h>
