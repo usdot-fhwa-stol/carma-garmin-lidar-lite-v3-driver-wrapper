@@ -23,7 +23,7 @@ LidarLiteNode::LidarLiteNode() : pnh_("~")
     sub_2_.subscribe(nh_, "range_sensor2/range", 1);
     sync_.reset(new Sync(MySyncPolicy(10), sub_1_, sub_2_));
     sync_->registerCallback(boost::bind(&LidarLiteNode::sensorCallback, this, _1, _2));
-    pub_ang_=nh_.advertise<std_msgs::Float64>("trailer_angle",10);
+    pub_ang_=nh_.advertise<cav_msgs::TrailerAngle>("trailer_angle",10);
     sub_alert_=nh_.subscribe("system_alert",10,&LidarLiteNode::alertCallback,this);
     pub_status_=nh_.advertise<cav_msgs::DriverStatus>("driver_discovery", 10);
   }
