@@ -49,7 +49,7 @@ jobs:
           name: Pull Deps
           command: |
             source ${INIT_ENV}
-            ./src/CARMAGarminLidarLiteV3DriverWrapper/docker/checkout.sh ${PWD}
+            ./src/CARMAGarminLidarLiteV3DriverWrapper/docker/checkout.sh -r ${PWD}
       - run:
           name: Build Driver
           command: |
