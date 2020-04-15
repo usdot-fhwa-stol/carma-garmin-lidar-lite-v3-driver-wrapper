@@ -15,7 +15,7 @@ Note: Its better to use the rosserial from source over binary and do catkin_make
 
 3) Load the Arduino code and build it. Note sensor 1 code should be put in one Arduion and the other Arduino with sensor 2 code.
 
-4) Clone the CARMAMsgs repo into the src : https://github.com/usdot-fhwa-stol/CARMAMsgs.git.
+4) Clone the CARMAMsgs repo into the src : https://github.com/usdot-fhwa-stol/carma-msgs.git.
 
 5) Connect both the Arduino controllers and check the ports using following
 
