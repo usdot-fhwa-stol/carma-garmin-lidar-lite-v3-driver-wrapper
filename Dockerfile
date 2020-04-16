@@ -33,7 +33,7 @@ LABEL org.label-schema.description="CARMA Garmin Lidar LiteV3 trailer angle sens
 LABEL org.label-schema.vendor="Leidos"
 LABEL org.label-schema.version=${VERSION}
 LABEL org.label-schema.url="https://highways.dot.gov/research/research-programs/operations/CARMA"
-LABEL org.label-schema.vcs-url="https://github.com/usdot-fhwa-stol/CARMAGarminLidarLiteV3DriverWrapper/"
+LABEL org.label-schema.vcs-url="https://github.com/usdot-fhwa-stol/carma-garmin-lidar-lite-v3-driver-wrapper/"
 LABEL org.label-schema.vcs-ref=${VCS_REF}
 LABEL org.label-schema.build-date=${BUILD_DATE}
 
