@@ -23,7 +23,7 @@ LidarLiteNode::LidarLiteNode() : pnh_("~")
     sub_2_.subscribe(nh_, "range_sensor2/range", 1);
     sync_.reset(new Sync(MySyncPolicy(10), sub_1_, sub_2_));
     sync_->registerCallback(boost::bind(&LidarLiteNode::sensorCallback, this, _1, _2));
-    pub_ang_=nh_.advertise<std_msgs::Float64>("trailer_angle",10);
+    pub_ang_=nh_.advertise<cav_msgs::TrailerAngle>("trailer_angle",10);
     sub_alert_=nh_.subscribe("system_alert",10,&LidarLiteNode::alertCallback,this);
     pub_status_=nh_.advertise<cav_msgs::DriverStatus>("driver_discovery", 10);
   }
@@ -37,10 +37,9 @@ LidarLiteNode::LidarLiteNode() : pnh_("~")
     double sensor_distance; //Distance between sensor
     pnh_.getParam("distance_between_two_sensor",sensor_distance);
     ROS_INFO_STREAM("sensor1= "<<sensor_inp1->range<<" "<<"sensor2= "<<sensor_inp2->range<<"sensor_distance= "<<sensor_distance);
-    std_msgs::Float64 msg_ang;
-    msg_ang.data=worker_.LidarLiteNodeWorker::trailerAngle(sensor_distance,sensor_inp1->range,sensor_inp2->range);
-    pub_ang_.publish(msg_ang);
-   
+    tangle_.header.stamp=ros::Time::now();
+    tangle_.angle=worker_.LidarLiteNodeWorker::trailerAngle(sensor_distance,sensor_inp1->range,sensor_inp2->range);
+    pub_ang_.publish(tangle_);
   }
 
     void LidarLiteNode::alertCallback(const cav_msgs::SystemAlertConstPtr &msg)

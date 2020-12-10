@@ -25,6 +25,7 @@
 #include <message_filters/sync_policies/approximate_time.h>
 #include <cav_msgs/SystemAlert.h>
 #include <cav_msgs/DriverStatus.h>
+#include <cav_msgs/TrailerAngle.h>
 #include "lidar_litev3hp_worker.h"
 
 class LidarLiteNode
@@ -32,6 +33,7 @@ class LidarLiteNode
 
  private:
   cav_msgs::DriverStatus status_;
+  cav_msgs::TrailerAngle tangle_;
   message_filters::Subscriber<sensor_msgs::Range> sub_1_;
   message_filters::Subscriber<sensor_msgs::Range> sub_2_;
   ros::Publisher pub_ang_;
