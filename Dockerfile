@@ -12,7 +12,7 @@
 #  License for the specific language governing permissions and limitations under
 #  the License.
 
-FROM usdotfhwastolcandidate/carma-base:vanden-plas as deps
+FROM usdotfhwastolcandidate/carma-base:3.4.0-test as deps
 
 FROM deps as setup
 
