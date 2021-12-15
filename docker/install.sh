@@ -14,7 +14,8 @@
 #  License for the specific language governing permissions and limitations under
 #  the License.
 
-sudo chmod -R +x /opt/carma/install
-source /opt/ros/kinetic/setup.bash
+# Source environment variables
+source /home/carma/.base-image/init-env.sh
+
 cd ~/
 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
