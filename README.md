@@ -1,3 +1,8 @@
+| CicleCI Build Status | Sonar Code Quality | DockerHub Release | DockerHub Release Candidate | DockerHub Develop |
+|------|-----|-----|-----|-----|
+[![CircleCI](https://img.shields.io/circleci/build/gh/usdot-fhwa-stol/carma-garmin-lidar-lite-v3-driver-wrapper/develop?label=CircleCI)](https://app.circleci.com/pipelines/github/usdot-fhwa-stol/carma-garmin-lidar-lite-v3-driver-wrapper?branch=develop) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-fhwa-stol_CARMAGarminLidarLiteV3DriverWrapper&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot-fhwa-stol_CARMAGarminLidarLiteV3DriverWrapper) | [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/usdotfhwastol/carma-garmin-lidar-lite-v3-driver-wrapper?label=carma-garmin-lidar-lite-v3-driver-wrapper)](https://hub.docker.com/repository/docker/usdotfhwastol/carma-garmin-lidar-lite-v3-driver-wrapper) | [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/usdotfhwastolcandidate/carma-garmin-lidar-lite-v3-driver-wrapper?label=carma-garmin-lidar-lite-v3-driver-wrapper)](https://hub.docker.com/repository/docker/usdotfhwastolcandidate/carma-garmin-lidar-lite-v3-driver-wrapper) | [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/usdotfhwastoldev/carma-garmin-lidar-lite-v3-driver-wrapper?label=carma-garmin-lidar-lite-v3-driver-wrapper)](https://hub.docker.com/repository/docker/usdotfhwastoldev/carma-garmin-lidar-lite-v3-driver-wrapper)
+
+
 # CARMAGarminLidarLiteV3DriverWrapper
 CARMAGarminLidarLiteV3DriverWrapper contains a driver wrapper which is developed based on GarminLidarLite Arduino Library which is licensed under the Apache 2.0 License.
 
