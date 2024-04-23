@@ -1,7 +1,13 @@
 name: CI
 on:
   push:
+    branches:
+      - develop
+      - master
+      - "release/*"
   pull_request:
+    types: [opened, synchronize, reopened]
+
 jobs:
   build:
     defaults:
@@ -17,7 +23,7 @@ jobs:
       options: "--user root"
     steps:
     - name: Checkout ${{ github.event.repository.name }}
-      uses: actions/checkout@v3.3.0
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
         path: src/${{ github.event.repository.name }}
@@ -26,7 +32,7 @@ jobs:
     - name: Checkout dependencies
       run: |
         source "$INIT_ENV"
-        ./src/${{ github.event.repository.name }}/docker/checkout.bash -r /opt/carma/
+        ./src/${{ github.event.repository.name }}/docker/checkout.bash -r /opt/carma/ 
     - name: Build
       run: |
         source "$INIT_ENV"

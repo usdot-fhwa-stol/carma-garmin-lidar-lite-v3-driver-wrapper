@@ -11,10 +11,11 @@
 #  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #  License for the specific language governing permissions and limitations under
 #  the License.
-
-FROM usdotfhwastol/carma-base:carma-system-4.5.0 as deps
-
-FROM deps as setup
+ARG DOCKER_ORG="usdotfhwastoldev"
+ARG DOCKER_TAG="develop"
+FROM ${DOCKER_ORG}/carma-base:${DOCKER_TAG} as base
+FROM base as setup
+ARG GIT_BRANCH="develop" 
 
 ARG ROS1_PACKAGES=""
 ENV ROS1_PACKAGES=${ROS1_PACKAGES}
@@ -23,10 +24,10 @@ ENV ROS2_PACKAGES=${ROS2_PACKAGES}
 
 RUN mkdir ~/src
 COPY --chown=carma . /home/carma/src/
-RUN ~/src/docker/checkout.bash
+RUN ~/src/docker/checkout.bash - ${GIT_BRANCH}}
 RUN ~/src/docker/install.sh
 
-FROM deps
+FROM base
 
 ARG BUILD_DATE="NULL"
 ARG VERSION="NULL"
