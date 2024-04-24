@@ -24,7 +24,7 @@ ENV ROS2_PACKAGES=${ROS2_PACKAGES}
 
 RUN mkdir ~/src
 COPY --chown=carma . /home/carma/src/
-RUN ~/src/docker/checkout.bash - ${GIT_BRANCH}}
+RUN ~/src/docker/checkout.bash -b ${GIT_BRANCH}
 RUN ~/src/docker/install.sh
 
 FROM base
