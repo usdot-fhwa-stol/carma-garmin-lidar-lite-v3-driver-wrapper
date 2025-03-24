@@ -11,11 +11,11 @@
 #  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #  License for the specific language governing permissions and limitations under
 #  the License.
-ARG DOCKER_ORG="usdotfhwastolcandidate"
-ARG DOCKER_TAG="test_run-humble"
+ARG DOCKER_ORG="usdotfhwastoldev"
+ARG DOCKER_TAG="sync_test_run-humble"
 FROM ${DOCKER_ORG}/carma-base:${DOCKER_TAG} as base
 FROM base as setup
-ARG GIT_BRANCH="release/test_run" 
+ARG GIT_BRANCH="sync_test_run" 
 
 ARG ROS1_PACKAGES=""
 ENV ROS1_PACKAGES=${ROS1_PACKAGES}
